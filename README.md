@@ -4,6 +4,9 @@
 
 No real purpose, other than it's kinda fun to watch the messages fly past and count the stats. PR's welcome if you'd like to contribute :-)
 
+![alt text](https://github.com/richstokes/bluehose/blob/main/screenshot.png?raw=true)
+
+
 ## Install
 
 ```bash
