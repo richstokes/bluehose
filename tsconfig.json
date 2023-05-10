@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "target": "esnext",
+        "module": "ESNext",
+        "moduleResolution": "node16",
+        "outDir": "dist",
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "include": [
+        "./src"
+    ],
+    "ts-node": {
+        "transpileOnly": true,
+        "files": true,
+        "experimentalResolver": true,
+        "experimentalSpecifierResolution": "node"
+    }
+}
