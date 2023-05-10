@@ -99,7 +99,6 @@ export default function App() {
 	}, []);
 
 	useEffect(() => {
-		// console.log("updating rate");
 		const intervalId = setInterval(() => {
 			// setRate(countSinceLast);
 			setCountSinceLast(0); // reset 
@@ -157,9 +156,9 @@ export default function App() {
 
 				<Box flexDirection="column" marginLeft={2}>
 					<Text>Latest post:{'\n'}</Text>
-					<Box borderStyle="round" marginTop={0} marginLeft={0} marginRight={2} height={10} wrap="truncate">
+					<Box borderStyle="round" marginTop={0} marginLeft={0} marginRight={2} height={10} >
 						{lastNonEmptyMessage && lastNonEmptyMessage.trim().length > 0 ? (
-							<Text>{lastNonEmptyMessage}</Text>
+							<Text wrap="truncate">{lastNonEmptyMessage}</Text>
 						) : null}
 					</Box>
 				</Box>
