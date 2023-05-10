@@ -56,10 +56,11 @@ export default function App() {
 							uri: AtUri.make(commit.repo, collection, rkey).toString(),
 						});
 					} else if (op.action === WriteOpAction.Delete) {
-						ops.push({
-							action: op.action,
-							uri: AtUri.make(commit.repo, collection, rkey).toString(),
-						});
+						// Probably dont really need this
+						// ops.push({
+						// 	action: op.action,
+						// 	uri: AtUri.make(commit.repo, collection, rkey).toString(),
+						// });
 					} else {
 						console.warn(`ERROR: Unknown repo op action: ${op.action}`);
 					}
@@ -110,14 +111,13 @@ export default function App() {
 
 	return (
 		<Box flexDirection="column" padding={0}>
-			<Box>
-				<Text color={'blue'}>BlueSky Firehose</Text>
-				{/* <Gradient name="rainbow">
+			<Box flexDirection="column" borderStyle="double" margin={2}>
+				<Box>
+					<Text color={'blue'}>BlueSky Firehose</Text>
+					{/* <Gradient name="rainbow">
 					<BigText text="unicorns" />
 				</Gradient> */}
-			</Box>
-
-			<Box flexDirection="column" borderStyle="double" margin={2}>
+				</Box>
 				<Box flexDirection="row" margin={0} justifyContent="flex-start">
 					<Box borderStyle="round" margin={2}>
 						{isConnected &&
