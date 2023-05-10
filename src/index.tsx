@@ -1,6 +1,3 @@
-import * as dotenv from "dotenv";
-dotenv.config();
-
 import React, { useEffect, useState } from 'react';
 import Gradient from 'ink-gradient';
 import BigText from 'ink-big-text';
@@ -154,7 +151,7 @@ export default function App() {
 				</Box>
 
 				<Box borderStyle="single" margin={2}>
-					<Text color={'green'}>Last message action: </Text>
+					<Text color={'green'}>Last action: </Text>
 					{lastMessage && <Text color={'blue'}>{lastMessage.action!}</Text>}
 				</Box>
 
