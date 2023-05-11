@@ -19,6 +19,7 @@ export default function App() {
 	const [isConnected, setIsConnected] = useState(false);
 	const [error, setError] = useState(null);
 	const [messages, setMessages] = useState([]);
+	const [lastHandle, setLastHandle] = useState(null);
 	const [lastMessage, setLastMessage] = useState(null);
 	const [lastNonEmptyMessage, setLastNonEmptyMessage] = useState(null);
 	const [startTime, setStartTime] = useState(null);
@@ -34,6 +35,9 @@ export default function App() {
 			setIsConnected(true);
 			try {
 				const commit = frameBody as Commit;
+				if (!(commit.blocks instanceof Uint8Array)) {
+					return;
+				}
 				const car = await readCarWithRoot(commit.blocks);
 				const ops = [];
 				commit.ops.forEach((op) => {
@@ -63,6 +67,7 @@ export default function App() {
 						// });
 					} else {
 						console.warn(`ERROR: Unknown repo op action: ${op.action}`);
+						setError(`Unknown action: ${op.action}`);
 					}
 					// ops.forEach((op) => console.log(JSON.stringify(op, null, 2)));
 
@@ -73,6 +78,11 @@ export default function App() {
 							// console.log("Setting last non empty message: ", op.record.text);
 							setLastNonEmptyMessage(op.record.text);
 						}
+
+						// if (op.record?.text) {
+						// 	// setLastHandle(op.record.author.handle);
+						// 	setLastHandle(JSON.stringify(op, null, 2))
+						// }
 
 						if (op.record?.$type === "app.bsky.feed.like") {
 							setLikeCount((prevCount) => prevCount + 1);
@@ -161,6 +171,7 @@ export default function App() {
 							<Text wrap="truncate">{lastNonEmptyMessage}</Text>
 						) : null}
 					</Box>
+					{/* <Text>Latest handle:{lastHandle}</Text> */}
 				</Box>
 
 				<Box marginTop={4} marginLeft={2} >
